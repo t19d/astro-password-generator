@@ -1,0 +1,18 @@
+@import url("./colors.css");
+
+.btn {
+	display: flex;
+	border: 0;
+	padding: 0;
+	padding: 10px;
+	border-radius: 8px;
+	background-color: var(--primary-light-color);
+	color: var(--primary-dark-color);
+	transition: all 0.3s;
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--primary-dark-color);
+		color: var(--primary-light-color);
+	}
+}

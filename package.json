@@ -1,0 +1,23 @@
+{
+	"name": "password-generator",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.6.0",
+		"@astrojs/preact": "^3.3.0",
+		"astro": "^4.8.3",
+		"preact": "^10.22.0",
+		"typescript": "^5.4.5"
+	},
+	"overrides": {
+		"react": "npm:@preact/compat@latest",
+		"react-dom": "npm:@preact/compat@latest"
+	}
+}
