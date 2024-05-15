@@ -1,9 +1,13 @@
 .card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+	min-width: 300px;
+	width: 85dvw;
+	max-width: 1000px;
 	padding: 24px 32px;
 	background-color: var(--background-card-color);
 	border-radius: 8px;
-	min-width: 300px;
-	width: 50dvw;
-	max-width: 1000px;
 	box-shadow: 0px 0px 10px 5px var(--shadow-color);
 }
