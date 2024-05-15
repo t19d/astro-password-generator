@@ -1,5 +1,11 @@
 :root {
 	--primary-color: #8a2be2;
 	--primary-light-color: #efe4f9;
-    --primary-dark-color: #4d0099;
+	--primary-dark-color: #4d0099;
+
+	/* CARD */
+	--background-card-color: #f5f5f5;
+
+	/* SHADOW */
+	--shadow-color: #8a2be21a;
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
-import "./Card.css";
 import PasswordGenerated from "@/components/preact/PasswordGenerated/PasswordGenerated";
+import "@/styles/colors.css";
+import "./Card.css";
 
 export default function Card() {
 	const [password, setPassword] = useState("");
