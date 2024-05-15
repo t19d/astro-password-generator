@@ -1,0 +1,99 @@
+.length-picker {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 0.5rem;
+
+	label {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+        letter-spacing: 2px;
+		color: var(--primary-dark-color);
+	}
+
+	/*********** Baseline, reset styles ***********/
+	input {
+		&[type="number"] {
+			/* Firefox */
+			-moz-appearance: textfield;
+			appearance: textfield;
+			padding-block: 0.5rem;
+			background-color: transparent;
+			font-family: inherit;
+			text-align: center;
+			border: 2px solid var(--primary-dark-color);
+			border-radius: 8px;
+			transition: border-color 0.3s;
+
+			/* Chrome, Safari, Edge, Opera */
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+			&:focus {
+				outline: none;
+				border-color: var(--primary-color);
+			}
+		}
+
+		&[type="range"] {
+			-webkit-appearance: none;
+			appearance: none;
+			background: transparent;
+			cursor: pointer;
+
+			/* Remove default focus */
+			&:focus {
+				outline: none;
+			}
+
+			/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+			/* slider track */
+			&::-webkit-slider-runnable-track {
+				background-color: var(--primary-light-color);
+				border-radius: 25px;
+				height: 8px;
+			}
+
+			/* slider thumb */
+			&::-webkit-slider-thumb {
+				-webkit-appearance: none; /* Override default look */
+				appearance: none;
+				margin-top: -12px;
+				background-color: var(--primary-dark-color);
+				border-radius: 8px;
+				height: 32px;
+				width: 10px;
+				transition: background-color 0.3s;
+			}
+
+			&:focus::-webkit-slider-thumb {
+				background-color: var(--primary-color);
+			}
+
+			/*********** Firefox styles ***********/
+			/* slider track */
+			&::-moz-range-track {
+				background-color: var(--primary-light-color);
+				border-radius: 25px;
+				height: 8px;
+			}
+
+			/* slider thumb */
+			&::-moz-range-thumb {
+				background-color: var(--primary-dark-color);
+				border: none;
+				border-radius: 8px;
+				height: 32px;
+				width: 10px;
+				transition: background-color 0.3s;
+			}
+
+			&:focus::-moz-range-thumb {
+				background-color: var(--primary-color);
+			}
+		}
+	}
+}
