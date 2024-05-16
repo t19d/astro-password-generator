@@ -1,4 +1,4 @@
-import "@/styles/colors.css";
+import "@/styles/titles.css";
 import "./LengthPicker.css";
 
 interface LengthPickerProps {
@@ -18,7 +18,9 @@ export default function LengthPicker({ length, setLength }: LengthPickerProps) {
 
 	return (
 		<article className="length-picker">
-			<label htmlFor="length">Length</label>
+			<label className="article-title" htmlFor="length">
+				Length
+			</label>
 
 			<input type="range" min={min} max={max} step={step} value={length} onInput={updateLength} />
 

@@ -1,0 +1,8 @@
+@import url("./colors.css");
+
+.article-title {
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	letter-spacing: 2px;
+	color: var(--primary-dark-color);
+}

@@ -4,13 +4,6 @@
 	align-items: center;
 	gap: 0.5rem;
 
-	label {
-		font-size: 1.5rem;
-		line-height: 1.5rem;
-        letter-spacing: 2px;
-		color: var(--primary-dark-color);
-	}
-
 	/*********** Baseline, reset styles ***********/
 	input {
 		&[type="number"] {

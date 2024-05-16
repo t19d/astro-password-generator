@@ -1,33 +1,37 @@
 import { useEffect, useState } from "preact/hooks";
 import PasswordGenerated from "@/components/preact/PasswordGenerated/PasswordGenerated";
-import LengthPicker from "../LengthPicker/LengthPicker";
-
+import LengthPicker from "@/components/preact/LengthPicker/LengthPicker";
+import CharactersPicker, { type CharactersTypes } from "@/components/preact/CharactersType/CharactersType";
+import { generatePassword } from "@/tools/tools";
 import "@/styles/colors.css";
 import "./Card.css";
 
 export default function Card() {
-	const [password, setPassword] = useState("");
-	const [length, setLength] = useState(12);
+	const [password, setPassword] = useState<string>("");
+	const [length, setLength] = useState<number>(12);
+	const [charactersTypes, setCharactersTypes] = useState<CharactersTypes>({
+		hasLowercase: true,
+		hasUppercase: true,
+		hasNumbers: true,
+		hasSymbols: true,
+	});
 
 	const handleGeneratePassword = () => {
-		let password = "";
-
-		for (let i = 0; i < length; i++) {
-			password += String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-		}
-
+		const password = generatePassword(length, charactersTypes);
 		setPassword(password);
 	};
 
 	useEffect(() => {
 		handleGeneratePassword();
-	}, [length]);
+	}, [length, charactersTypes]);
 
 	return (
 		<section className="card">
 			<PasswordGenerated generatedPassword={password} handleGeneratePassword={handleGeneratePassword} />
 
 			<LengthPicker length={length} setLength={setLength} />
+
+			<CharactersPicker charactersTypes={charactersTypes} setCharactersTypes={setCharactersTypes} />
 
 			<button className="btn" onClick={handleGeneratePassword}>
 				Generate Password
