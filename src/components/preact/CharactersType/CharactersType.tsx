@@ -1,5 +1,6 @@
 import "@/styles/titles.css";
 import "./CharactersType.css";
+import { useState } from "preact/hooks";
 
 export interface CharactersTypes {
 	hasLowercase: boolean;
@@ -14,12 +15,49 @@ interface CharactersTypeProps {
 }
 
 export default function CharactersType({ charactersTypes, setCharactersTypes }: CharactersTypeProps) {
-	const updateCharactersTypes = (key: "hasLowercase" | "hasUppercase" | "hasNumbers" | "hasSymbols", e: any) => {
-		if (!key || !Object.keys(charactersTypes).includes(key)) return;
+	const charactersTypesKeys = Object.keys(charactersTypes) as (keyof CharactersTypes)[];
+	const [canUncheckCharactersTypes, setCanUncheckCharactersTypes] = useState({
+		hasLowercase: true,
+		hasUppercase: true,
+		hasNumbers: true,
+		hasSymbols: true,
+	});
+
+	const updateCharactersTypes = (key: keyof CharactersTypes, e: any) => {
+		if (!key || !charactersTypesKeys.includes(key)) return;
+
+		if (!canUncheckCharactersTypes[key]) {
+			e.target.checked = true;
+			return;
+		}
 
 		const value = e?.target?.checked ?? false;
 		charactersTypes[key] = value;
+		updateCanUncheckCharactersTypes();
+
 		setCharactersTypes({ ...charactersTypes });
+	};
+
+	const updateCanUncheckCharactersTypes = () => {
+		// Si es el único true, que no pueda ser unchekeado
+		const valuesSelected = Object.values(charactersTypes).filter((v) => v);
+
+		if (valuesSelected.length < 2) {
+			for (let i = 0; i < charactersTypesKeys.length; i++) {
+				const key = charactersTypesKeys[i];
+
+				if (charactersTypes[key]) {
+					canUncheckCharactersTypes[key] = false;
+				}
+			}
+		} else {
+			// Reset
+			canUncheckCharactersTypes.hasLowercase = true;
+			canUncheckCharactersTypes.hasUppercase = true;
+			canUncheckCharactersTypes.hasNumbers = true;
+			canUncheckCharactersTypes.hasSymbols = true;
+		}
+		setCanUncheckCharactersTypes({ ...canUncheckCharactersTypes });
 	};
 
 	return (
