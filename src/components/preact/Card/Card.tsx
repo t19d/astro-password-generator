@@ -32,10 +32,6 @@ export default function Card() {
 			<LengthPicker length={length} setLength={setLength} />
 
 			<CharactersPicker charactersTypes={charactersTypes} setCharactersTypes={setCharactersTypes} />
-
-			<button className="btn" onClick={handleGeneratePassword}>
-				Generate Password
-			</button>
 		</section>
 	);
 }
