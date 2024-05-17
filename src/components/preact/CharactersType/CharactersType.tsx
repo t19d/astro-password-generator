@@ -72,6 +72,7 @@ export default function CharactersType({ charactersTypes, setCharactersTypes }: 
 						name="hasUppercase"
 						checked={charactersTypes.hasUppercase}
 						onChange={(e) => updateCharactersTypes("hasUppercase", e)}
+						aria-label="Include uppercase letters"
 					/>
 					<label htmlFor="hasUppercase">ABC</label>
 				</div>
@@ -83,6 +84,7 @@ export default function CharactersType({ charactersTypes, setCharactersTypes }: 
 						name="hasLowercase"
 						checked={charactersTypes.hasLowercase}
 						onChange={(e) => updateCharactersTypes("hasLowercase", e)}
+						aria-label="Include lowercase letters"
 					/>
 					<label htmlFor="hasLowercase">abc</label>
 				</div>
@@ -94,6 +96,7 @@ export default function CharactersType({ charactersTypes, setCharactersTypes }: 
 						name="hasNumbers"
 						checked={charactersTypes.hasNumbers}
 						onChange={(e) => updateCharactersTypes("hasNumbers", e)}
+						aria-label="Include numbers"
 					/>
 					<label htmlFor="hasNumbers">123</label>
 				</div>
@@ -105,6 +108,7 @@ export default function CharactersType({ charactersTypes, setCharactersTypes }: 
 						name="hasSymbols"
 						checked={charactersTypes.hasSymbols}
 						onChange={(e) => updateCharactersTypes("hasSymbols", e)}
+						aria-label="Include symbols"
 					/>
 					<label htmlFor="hasSymbols">#$&</label>
 				</div>

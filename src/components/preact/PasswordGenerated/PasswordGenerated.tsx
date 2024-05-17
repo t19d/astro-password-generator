@@ -17,11 +17,11 @@ export default function PasswordGenerated({ generatedPassword, handleGeneratePas
 		<article className="password-generated">
 			<span className="password">{generatedPassword}</span>
 
-			<button className="btn" onClick={handleGeneratePassword}>
+			<button className="btn" onClick={handleGeneratePassword} aria-label="Generate new password">
 				<Refresh />
 			</button>
 
-			<button className="btn" onClick={handleCopy}>
+			<button className="btn" onClick={handleCopy} aria-label="Copy password to clipboard">
 				<Copy />
 			</button>
 		</article>
