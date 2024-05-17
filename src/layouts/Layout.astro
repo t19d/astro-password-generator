@@ -3,9 +3,15 @@ import "@/styles/global.css";
 
 interface Props {
 	title?: string;
+	metaDescription?: string;
+	metaUrl?: string;
+	metaImage?: string;
 }
 
 const title = Astro.props.title ?? "Password Generator";
+const metaDescription = Astro.props.metaDescription ?? "Generate passwords with this easy-to-use password generator.";
+const metaUrl = Astro.props.metaUrl ?? "https://astro-password-generator.vercel.app/";
+const metaImage = Astro.props.metaImage ?? "https://astro-password-generator.vercel.app/img/password-generator-banner.jpg";
 ---
 
 <!doctype html>
@@ -17,7 +23,21 @@ const title = Astro.props.title ?? "Password Generator";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-        <link rel="style" href=""/>
+		<link rel="style" href="" />
+
+		<!-- Open Graph Meta Tags -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={metaDescription} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={metaUrl} />
+		<meta property="og:image" content={metaImage} />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter Card Meta Tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={metaDescription} />
+		<meta name="twitter:image" content={metaImage} />
 	</head>
 	<body>
 		<main>
