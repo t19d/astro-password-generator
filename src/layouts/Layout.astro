@@ -40,6 +40,20 @@ const metaImage = Astro.props.metaImage ?? "https://astro-password-generator.ver
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={metaDescription} />
 		<meta name="twitter:image" content={metaImage} />
+
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "Secure Password Generator",
+			"url": metaUrl,
+			"description": metaDescription,
+			"applicationCategory": "SecurityApplication",
+			"operatingSystem": "Any",
+			"offers": {
+				"@type": "Offer",
+				"price": "0"
+			}
+		})} />
 	</head>
 	<body>
 		<main>
