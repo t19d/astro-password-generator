@@ -13,6 +13,30 @@ import Layout from "../layouts/Layout.astro";
 			<p>Generate strong, customizable passwords instantly.</p>
 		</header>
 		<Card client:visible />
+
+		<section class="seo-content">
+			<article>
+				<h2>Why use our Secure Password Generator?</h2>
+				<p>Creating a strong password is the first line of defense against cyber threats. Our <strong>random password creator</strong> makes it effortless to generate highly secure, complex passwords that meet any <strong>strong password policy</strong>. Whether you need a password for your email, banking, or social media, we've got you covered.</p>
+			</article>
+
+			<article>
+				<h2>100% Local & Secure</h2>
+				<p>Your privacy is our priority. This tool runs entirely in your browser. <strong>No passwords are ever sent to a server</strong>, stored in a database, or tracked. The password generation happens locally on your device, ensuring maximum security.</p>
+			</article>
+
+			<article>
+				<h2>Frequently Asked Questions</h2>
+				<details>
+					<summary>Are password generators safe to use?</summary>
+					<p>Yes, as long as they generate the password locally in your browser. Our tool uses secure random number generation directly on your device, meaning nobody else can intercept or see the password you create.</p>
+				</details>
+				<details>
+					<summary>What makes a password strong?</summary>
+					<p>A strong password typically has at least 12-16 characters and includes a mix of uppercase letters, lowercase letters, numbers, and symbols. Avoiding dictionary words and predictable patterns is crucial.</p>
+				</details>
+			</article>
+		</section>
 	</div>
 </Layout>
 
@@ -44,5 +68,65 @@ import Layout from "../layouts/Layout.astro";
 		margin: 0;
 		color: var(--text-muted);
 		font-size: 1.1rem;
+	}
+
+	.seo-content {
+		max-width: 800px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-top: 2rem;
+		text-align: left;
+		color: var(--light-color);
+	}
+
+	.seo-content article {
+		background: rgba(0, 0, 0, 0.2);
+		padding: 1.5rem 2rem;
+		border-radius: 12px;
+		border: 1px solid rgba(255, 255, 255, 0.05);
+	}
+
+	.seo-content h2 {
+		color: var(--primary-light-color);
+		font-size: 1.5rem;
+		margin-top: 0;
+		margin-bottom: 1rem;
+	}
+
+	.seo-content p {
+		line-height: 1.6;
+		color: #ccc;
+		margin: 0;
+	}
+
+	.seo-content strong {
+		color: var(--light-color);
+	}
+
+	.seo-content details {
+		margin-bottom: 1rem;
+		background: rgba(255, 255, 255, 0.05);
+		border-radius: 8px;
+		overflow: hidden;
+	}
+
+	.seo-content summary {
+		cursor: pointer;
+		font-weight: 600;
+		color: var(--primary-light-color);
+		padding: 1rem;
+		user-select: none;
+		transition: background 0.2s ease;
+	}
+
+	.seo-content summary:hover {
+		background: rgba(255, 255, 255, 0.05);
+	}
+	
+	.seo-content details p {
+		padding: 0 1rem 1rem 1rem;
+		margin: 0;
 	}
 </style>
