@@ -2,7 +2,8 @@ import { useEffect, useState, useMemo } from "preact/hooks";
 import PasswordGenerated from "@/components/preact/PasswordGenerated/PasswordGenerated";
 import LengthPicker from "@/components/preact/LengthPicker/LengthPicker";
 import CharactersPicker, { type CharactersTypes } from "@/components/preact/CharactersType/CharactersType";
-import { generatePassword } from "@/tools/tools";
+import AdvancedOptions from "@/components/preact/AdvancedOptions/AdvancedOptions";
+import { generatePassword, type AdvancedOptions as AdvancedOptionsType } from "@/tools/tools";
 import "@/styles/colors.css";
 import "./Card.css";
 
@@ -37,15 +38,27 @@ export default function Card() {
 		hasNumbers: true,
 		hasSymbols: true,
 	});
+	const [advancedOptions, setAdvancedOptions] = useState<AdvancedOptionsType>({
+		excludeSimilar: false,
+		excludeAmbiguous: false,
+		allowExtendedLength: false,
+	});
+
+	// clamp length if user turns off extended length
+	useEffect(() => {
+		if (!advancedOptions.allowExtendedLength && length > 50) {
+			setLength(50);
+		}
+	}, [advancedOptions.allowExtendedLength, length]);
 
 	const handleGeneratePassword = () => {
-		const password = generatePassword(length, charactersTypes);
+		const password = generatePassword(length, charactersTypes, advancedOptions);
 		setPassword(password);
 	};
 
 	useEffect(() => {
 		handleGeneratePassword();
-	}, [length, charactersTypes]);
+	}, [length, charactersTypes, advancedOptions]);
 
 	const strengthScore = useMemo(() => calculateStrength(password), [password]);
 
@@ -65,9 +78,11 @@ export default function Card() {
 				</div>
 			</div>
 
-			<LengthPicker length={length} setLength={setLength} />
+			<LengthPicker length={length} setLength={setLength} allowExtendedLength={advancedOptions.allowExtendedLength} />
 
 			<CharactersPicker charactersTypes={charactersTypes} setCharactersTypes={setCharactersTypes} />
+
+			<AdvancedOptions options={advancedOptions} setOptions={setAdvancedOptions} />
 		</section>
 	);
 }

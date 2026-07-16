@@ -3,10 +3,9 @@
 	flex-direction: column;
 	justify-content: center;
 	gap: 1.5rem;
-	min-width: 320px;
-	width: 85dvw;
+	width: 100%;
 	max-width: 600px;
-	padding: 32px 40px;
+	padding: 2rem;
 	background-color: var(--background-card-color);
 	border-radius: 16px;
 	border: 1px solid var(--card-border);

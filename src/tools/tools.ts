@@ -1,17 +1,44 @@
 import type { CharactersTypes } from "@/components/preact/CharactersType/CharactersType";
 
+export interface AdvancedOptions {
+	excludeSimilar: boolean;
+	excludeAmbiguous: boolean;
+	allowExtendedLength: boolean;
+}
+
 const LOWER_CASE_CHARACTERS = "abcdefghijklmnopqrstuvwxyz";
 const UPPER_CASE_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const NUMBERS_CHARACTERS = "0123456789";
 const SYMBOLS_CHARACTERS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
-export function generatePassword(length: number, charactersTypes: CharactersTypes) {
+const SIMILAR_CHARACTERS = "il1Lo0O";
+const AMBIGUOUS_CHARACTERS = "{}[]()/\\'\"`~,;:.<>";
+
+export function generatePassword(
+	length: number, 
+	charactersTypes: CharactersTypes, 
+	advancedOptions?: AdvancedOptions
+) {
 	const { hasLowercase, hasUppercase, hasNumbers, hasSymbols } = charactersTypes;
-	const characters: string[] = [];
-	if (hasLowercase) characters.push(...LOWER_CASE_CHARACTERS);
-	if (hasUppercase) characters.push(...UPPER_CASE_CHARACTERS);
-	if (hasNumbers) characters.push(...NUMBERS_CHARACTERS);
-	if (hasSymbols) characters.push(...SYMBOLS_CHARACTERS);
+	const { excludeSimilar, excludeAmbiguous } = advancedOptions || { excludeSimilar: false, excludeAmbiguous: false };
+	
+	let charPool = "";
+	if (hasLowercase) charPool += LOWER_CASE_CHARACTERS;
+	if (hasUppercase) charPool += UPPER_CASE_CHARACTERS;
+	if (hasNumbers) charPool += NUMBERS_CHARACTERS;
+	if (hasSymbols) charPool += SYMBOLS_CHARACTERS;
+
+	let characters = charPool.split('');
+
+	if (excludeSimilar) {
+		const similarSet = new Set(SIMILAR_CHARACTERS.split(''));
+		characters = characters.filter(c => !similarSet.has(c));
+	}
+
+	if (excludeAmbiguous) {
+		const ambiguousSet = new Set(AMBIGUOUS_CHARACTERS.split(''));
+		characters = characters.filter(c => !ambiguousSet.has(c));
+	}
 
 	if (characters.length === 0) return "";
 

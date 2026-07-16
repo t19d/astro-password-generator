@@ -4,16 +4,18 @@ import "./LengthPicker.css";
 interface LengthPickerProps {
 	length: number;
 	setLength: (length: number) => void;
+	allowExtendedLength?: boolean;
 }
 
-export default function LengthPicker({ length, setLength }: LengthPickerProps) {
+export default function LengthPicker({ length, setLength, allowExtendedLength = false }: LengthPickerProps) {
 	const min = 1;
-	const max = 50;
+	const max = allowExtendedLength ? 128 : 50;
 	const step = 1;
 
 	const updateLength = (e: any) => {
-		const length = e?.target?.value ?? 1;
-		setLength(length);
+		let newLength = e?.target?.value ?? 1;
+		if (newLength > max) newLength = max;
+		setLength(newLength);
 	};
 
 	return (

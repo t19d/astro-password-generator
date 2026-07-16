@@ -8,6 +8,10 @@
 	src: url("/fonts/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf") format("truetype");
 }
 
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
 body {
 	font-family: "Noto Sans", sans-serif;
 	margin: 0;
