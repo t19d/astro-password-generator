@@ -24,6 +24,8 @@ const metaImage = Astro.props.metaImage ?? "https://astro-password-generator.ver
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="style" href="" />
+		<link rel="canonical" href={metaUrl} />
+		<meta name="robots" content="index, follow" />
 
 		<!-- Open Graph Meta Tags -->
 		<meta property="og:title" content={title} />

@@ -3,6 +3,46 @@ import Card from "@/components/preact/Card/Card";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-	<Card client:visible />
+<Layout 
+	title="Secure Password Generator | Fast & Local" 
+	metaDescription="Generate secure, strong, and highly customizable passwords directly in your browser. Fast, local, and private."
+>
+	<div class="container">
+		<header class="page-header">
+			<h1>Secure Password Generator</h1>
+			<p>Generate strong, customizable passwords instantly.</p>
+		</header>
+		<Card client:visible />
+	</div>
 </Layout>
+
+<style>
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 2.5rem;
+		padding: 2rem;
+		width: 100%;
+	}
+
+	.page-header {
+		text-align: center;
+	}
+
+	.page-header h1 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		margin: 0 0 0.5rem 0;
+		color: var(--primary-light-color);
+		text-shadow: var(--neon-glow);
+		font-weight: 800;
+		letter-spacing: -1px;
+	}
+
+	.page-header p {
+		margin: 0;
+		color: var(--text-muted);
+		font-size: 1.1rem;
+	}
+</style>

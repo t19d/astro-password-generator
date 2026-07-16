@@ -16,9 +16,10 @@ body {
 	display: grid;
 	grid-template-rows: 1fr;
 	/* BACKGROUND */
-	background-color: var(--primary-light-color);
-	background-image: radial-gradient(var(--primary-color) 1.35px, var(--primary-light-color) 1.35px);
+	background-color: #0d0d12;
+	background-image: radial-gradient(rgba(187, 134, 252, 0.15) 1px, transparent 1px);
 	background-size: 30px 30px;
+	color: var(--light-color);
 
 	main {
 		display: flex;

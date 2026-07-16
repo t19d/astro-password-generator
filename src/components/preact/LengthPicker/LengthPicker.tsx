@@ -22,7 +22,12 @@ export default function LengthPicker({ length, setLength }: LengthPickerProps) {
 				Length
 			</label>
 
-			<input type="range" min={min} max={max} step={step} value={length} onInput={updateLength} />
+			<input 
+				type="range" 
+				min={min} max={max} step={step} 
+				value={length} onInput={updateLength} 
+				style={{ backgroundSize: `${((length - min) / (max - min)) * 100}% 100%` }}
+			/>
 
 			<input id="length" type="number" min={min} max={max} step={step} value={length} onChange={updateLength} />
 		</article>
